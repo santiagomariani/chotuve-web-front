@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+    web:
+        #depends_on:
+        #    - nginx
+        container_name: chotuve_web
+        build: .
+        volumes:
+          - ./:/app
+        ports:
+          - "3000:80"
