@@ -36,7 +36,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
 
 # my nginx config
-COPY react-nginx.conf /etc/nginx/conf.d 
+COPY react-nginx.template /etc/nginx/conf.d 
 
 EXPOSE 80
 
