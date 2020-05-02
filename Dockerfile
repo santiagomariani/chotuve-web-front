@@ -38,8 +38,6 @@ RUN rm /etc/nginx/conf.d/default.conf
 # my nginx config
 COPY react-nginx.template /etc/nginx/conf.d 
 
-EXPOSE 80
-
 COPY docker-entrypoint-prod.sh /
 
 ENTRYPOINT ["sh", "/docker-entrypoint-prod.sh"]
