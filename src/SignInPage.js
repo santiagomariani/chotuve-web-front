@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container'
 import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
+import { CardMedia } from '@material-ui/core';
 
 function Copyright () {
   return (
@@ -81,13 +82,7 @@ export default function SignInPage (props) {
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component='h1' variant='h5'>
-            Sign in
-          </Typography>
-          
+          <img src={'logo.png'} />          
           <form className={classes.form} noValidate>
 
           {showPwEmailAlert ? PwEmailAlert: null}
