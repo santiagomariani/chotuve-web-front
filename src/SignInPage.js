@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container'
 import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
@@ -78,78 +78,78 @@ export default function SignInPage (props) {
   // el formulario (para indicar los mismos).
 
   return (
-    <Container component='main' maxWidth='xs'>
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component='h1' variant='h5'>
-          Sign in
-        </Typography>
-        
-        <form className={classes.form} noValidate>
+      <Container component='main' maxWidth='xs'>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component='h1' variant='h5'>
+            Sign in
+          </Typography>
+          
+          <form className={classes.form} noValidate>
 
-        {showPwEmailAlert ? PwEmailAlert: null}
-        
-          <TextField
-            error={noEmailError}
-            FormHelperTextProps={{ error: noEmailError }}
-            helperText={noEmailError ? 'Must insert the email' : ''}
-            variant='outlined'
-            margin='normal'
-            onChange={handleChangeUserEmail}
-            required
-            fullWidth
-            id='email'
-            value={email}
-            label='Email Address'
-            name='email'
-            autoComplete='email'
-            autoFocus
-          />
-          <TextField
-            error={noPasswordError}
-            FormHelperTextProps={{ error: noPasswordError }}
-            helperText={noPasswordError ? 'Must insert the password' : ''}
-            variant='outlined'
-            margin='normal'
-            onChange={handleChangeUserPassword}
-            required
-            fullWidth
-            name='password'
-            label='Password'
-            type='password'
-            id='password'
-            value={password}
-            autoComplete='current-password'
-          />
-          <Button
-            type='button'
-            fullWidth
-            variant='contained'
-            color='primary'
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href='#' variant='body2'>
-                Forgot password?
-              </Link>
+          {showPwEmailAlert ? PwEmailAlert: null}
+          
+            <TextField
+              error={noEmailError}
+              FormHelperTextProps={{ error: noEmailError }}
+              helperText={noEmailError ? 'Must insert the email' : ''}
+              variant='outlined'
+              margin='normal'
+              onChange={handleChangeUserEmail}
+              required
+              fullWidth
+              id='email'
+              value={email}
+              label='Email Address'
+              name='email'
+              autoComplete='email'
+              autoFocus
+            />
+            <TextField
+              error={noPasswordError}
+              FormHelperTextProps={{ error: noPasswordError }}
+              helperText={noPasswordError ? 'Must insert the password' : ''}
+              variant='outlined'
+              margin='normal'
+              onChange={handleChangeUserPassword}
+              required
+              fullWidth
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              value={password}
+              autoComplete='current-password'
+            />
+            <Button
+              type='button'
+              fullWidth
+              variant='contained'
+              color='primary'
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href='#' variant='body2'>
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href='/sign-up' variant='body2'>
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link href='/sign-up' variant='body2'>
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
+          </form>
+        </div>
+        <Box mt={8}>
+          <Copyright />
+        </Box>
+      </Container>
   )
 }

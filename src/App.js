@@ -5,9 +5,22 @@ import SignInPage from './SignInPage'
 import NoMatchPage from './NoMatchPage'
 import DashboardPage from './DashboardPage'
 import {Switch,Route} from "react-router-dom";
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#00e600',
+      main: '#00cc00',
+      dark: '#008000',
+      contrastText: '#ffffff',
+    }
+  },
+});
 
 function App() {
   return (
+  <ThemeProvider theme={theme}>
   <Switch>
     <Route path="/dashboard">
       <DashboardPage></DashboardPage>
@@ -19,6 +32,7 @@ function App() {
       <NoMatchPage></NoMatchPage>
     </Route>
   </Switch>
+  </ThemeProvider>
   );
 }
 
