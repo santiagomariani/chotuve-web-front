@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 //#import PrivateRoute from './PrivateRoute'
-import SignInPage from './SignInPage'
-import NoMatchPage from './NoMatchPage'
-import DashboardPage from './DashboardPage'
+import SignInPage from './pages/SignInPage/SignInPage'
+import NoMatchPage from './pages/NoMatchPage/NoMatchPage'
+import DashboardPage from './pages/DashboardPage/DashboardPage'
 import {Switch,Route} from "react-router-dom";
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
