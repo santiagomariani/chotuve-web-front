@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
 //#import PrivateRoute from './PrivateRoute'
-import SignInPage from './SignInPage'
-import NoMatchPage from './NoMatchPage'
-import DashboardPage from './DashboardPage'
+import SignInPage from './pages/SignInPage/SignInPage'
+import NoMatchPage from './pages/NoMatchPage/NoMatchPage'
+import DashboardPage from './pages/DashboardPage/DashboardPage'
+import ResourcesPage from './pages/ResourcesPage/ResourcesPage'
+import AppServersPage from './pages/AppServersPage/AppServersPage'
+import UsersPage from './pages/UsersPage/UsersPage'
 import {Switch,Route} from "react-router-dom";
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
@@ -25,6 +28,15 @@ function App() {
   <Switch>
     <Route path="/dashboard">
       <DashboardPage></DashboardPage>
+    </Route>
+    <Route path="/resources">
+      <ResourcesPage></ResourcesPage>
+    </Route>
+    <Route path="/app-servers">
+      <AppServersPage></AppServersPage>
+    </Route>
+    <Route path="/users">
+      <UsersPage></UsersPage>
     </Route>
     <Route exact path="/">
       <SignInPage></SignInPage>
