@@ -1,10 +1,10 @@
 import React from 'react'
 import Menu from '../../components/Menu'
 
-export default function NoMatchPage () {
+export default function UsersPage () {
   return (
     <Menu>
-      <h1>Error 404</h1>
+      <h1>Users</h1>
     </Menu>
   )
 }
