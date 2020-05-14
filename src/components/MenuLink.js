@@ -12,6 +12,6 @@ const useStyles = makeStyles((theme) => ({
 export default function MenuLink (props) {
     const  classes = useStyles();
     return (
-        <Link className={classes.estiloLink} {...props} />
+        <Link className={classes.estiloLink} {...props} underline='none'/>
     )
   }

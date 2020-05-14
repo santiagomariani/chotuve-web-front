@@ -65,74 +65,72 @@ export default function SignInPage (props) {
   // el formulario (para indicar los mismos).
 
   return (
-    <Menu>
-      <Container component='main' maxWidth='xs'>
-        <CssBaseline />
-        <div className={classes.paper}>
-          <img src={'logo.png'} />          
-          <form className={classes.form} noValidate>
+    <Container component='main' maxWidth='xs'>
+      <CssBaseline />
+      <div className={classes.paper}>
+        <img src={'logo.png'} />          
+        <form className={classes.form} noValidate>
 
-          {showPwEmailAlert ? PwEmailAlert: null}
-          
-            <TextField
-              error={noEmailError}
-              FormHelperTextProps={{ error: noEmailError }}
-              helperText={noEmailError ? 'Must insert the email' : ''}
-              variant='outlined'
-              margin='normal'
-              onChange={handleChangeUserEmail}
-              required
-              fullWidth
-              id='email'
-              value={email}
-              label='Email Address'
-              name='email'
-              autoComplete='email'
-              autoFocus
-            />
-            <TextField
-              error={noPasswordError}
-              FormHelperTextProps={{ error: noPasswordError }}
-              helperText={noPasswordError ? 'Must insert the password' : ''}
-              variant='outlined'
-              margin='normal'
-              onChange={handleChangeUserPassword}
-              required
-              fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
-              value={password}
-              autoComplete='current-password'
-            />
-            <Button
-              type='button'
-              fullWidth
-              variant='contained'
-              color='primary'
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href='#' variant='body2'>
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href='/sign-up' variant='body2'>
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+        {showPwEmailAlert ? PwEmailAlert: null}
+        
+          <TextField
+            error={noEmailError}
+            FormHelperTextProps={{ error: noEmailError }}
+            helperText={noEmailError ? 'Must insert the email' : ''}
+            variant='outlined'
+            margin='normal'
+            onChange={handleChangeUserEmail}
+            required
+            fullWidth
+            id='email'
+            value={email}
+            label='Email Address'
+            name='email'
+            autoComplete='email'
+            autoFocus
+          />
+          <TextField
+            error={noPasswordError}
+            FormHelperTextProps={{ error: noPasswordError }}
+            helperText={noPasswordError ? 'Must insert the password' : ''}
+            variant='outlined'
+            margin='normal'
+            onChange={handleChangeUserPassword}
+            required
+            fullWidth
+            name='password'
+            label='Password'
+            type='password'
+            id='password'
+            value={password}
+            autoComplete='current-password'
+          />
+          <Button
+            type='button'
+            fullWidth
+            variant='contained'
+            color='primary'
+            className={classes.submit}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href='#' variant='body2'>
+                Forgot password?
+              </Link>
             </Grid>
-          </form>
-        </div>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
-      </Container>
-    </Menu>
+            <Grid item>
+              <Link href='/sign-up' variant='body2'>
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
   )
 }
