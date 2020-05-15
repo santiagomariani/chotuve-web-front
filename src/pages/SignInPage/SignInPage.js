@@ -10,8 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container'
 import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
-import Copyright from '../../components/Copyright'
-import Menu from '../../components/Menu'
+import Copyright from 'components/Copyright'
+import Menu from 'components/Menu'
 
 const useStyles = makeStyles(theme => ({
   paper: {

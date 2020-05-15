@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
-import Menu from '../../components/Menu';
+import Menu from 'components/Menu';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
