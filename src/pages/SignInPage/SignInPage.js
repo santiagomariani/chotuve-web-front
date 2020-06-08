@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import Copyright from 'components/Copyright'
 import Menu from 'components/Menu'
+import {app} from 'app/app'
 
 import * as firebase from 'firebase';
 import { timeout } from 'q'
@@ -74,7 +75,10 @@ export default function SignInPage (props) {
     try {
       const loginResult = await firebase.auth().signInWithEmailAndPassword(email, password)
       const token = await loginResult.user.getIdToken()
-      console.log(token)
+      app.loginUser(token);
+      console.log(app.thereIsLoggedInUser())
+      setAlertMessage('')
+      history.push('/dashboard')
     } catch (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
