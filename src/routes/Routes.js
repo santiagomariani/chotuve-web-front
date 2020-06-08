@@ -26,18 +26,18 @@ class Routes extends Component {
         return (
         <ThemeProvider theme={theme}>
             <Switch>
-                <Route path="/dashboard">
+                <PrivateRoute path="/dashboard">
                     <DashboardPage></DashboardPage>
-                </Route>
-                <Route path="/resources">
+                </PrivateRoute>
+                <PrivateRoute path="/resources">
                     <ResourcesPage></ResourcesPage>
-                </Route>
-                <Route path="/app-servers">
+                </PrivateRoute>
+                <PrivateRoute path="/app-servers">
                     <AppServersPage></AppServersPage>
-                </Route>
-                <Route path="/users">
+                </PrivateRoute>
+                <PrivateRoute path="/users">
                     <UsersPage></UsersPage>
-                </Route>
+                </PrivateRoute>
                 <Route exact path="/">
                     <SignInPage></SignInPage>
                 </Route> 

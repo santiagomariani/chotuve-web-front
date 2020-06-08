@@ -6,7 +6,7 @@ export default function PrivateRoute({children, ...rest}) {
     <Route
       {...rest}
       render={props =>
-        localStorage.getItem('usertoken') ? (
+        localStorage.getItem('token') ? (
           children
         ) : (
           <Redirect

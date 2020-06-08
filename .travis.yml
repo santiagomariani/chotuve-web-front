@@ -2,6 +2,8 @@ sudo: required
 services:
   - docker
 
+if: commit_message !~ /(no-ci|wip)/
+
 before_install:
   # install heroku CLI
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh

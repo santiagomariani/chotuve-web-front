@@ -28,6 +28,10 @@ class App {
         localStorage.setItem("token", token);
     }
 
+    logoutUser() {
+        localStorage.removeItem("token");
+    }
+
     thereIsLoggedInUser() {
         return localStorage.getItem("token");
     }
