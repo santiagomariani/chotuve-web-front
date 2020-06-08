@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
@@ -12,6 +12,21 @@ import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import Copyright from 'components/Copyright'
 import Menu from 'components/Menu'
+
+import * as firebase from 'firebase';
+import { timeout } from 'q'
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDlBeowWP8UPWsvk9kXj9JDaN5_xsuNu4I",
+  authDomain: "chotuve-videos.firebaseapp.com",
+  databaseURL: "https://chotuve-videos.firebaseio.com",
+  projectId: "chotuve-videos",
+  storageBucket: "chotuve-videos.appspot.com",
+  messagingSenderId: "662757364228",
+  appId: "1:662757364228:web:02d934f2819b5d58581b51"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -34,6 +49,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function SignInPage (props) {
+  
   const classes = useStyles()
 
   const [email, setEmail] = useState('')
@@ -42,6 +58,7 @@ export default function SignInPage (props) {
   const [noEmailError, setNoEmailError] = useState(false)
   const [noPasswordError, setNoPasswordError] = useState(false)
   const [showPwEmailAlert, setShowPwEmailAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
 
   const history = useHistory()
 
@@ -53,16 +70,23 @@ export default function SignInPage (props) {
     setEmail(e.target.value)
   }
 
-  const PwEmailAlert = <Alert 
-                            variant="outlined"
-                            severity="error">   
-                          Email or password is incorrect
-                        </Alert>
-
-  // TODO: agregar handler para el boton sign in.
-  // Cuando me logueo recibo un token y algun mensaje diciendo
-  // si todo ocurrio bien, y en base a esto se setean errores en
-  // el formulario (para indicar los mismos).
+  const handleOnClick = async () => {
+    try {
+      const loginResult = await firebase.auth().signInWithEmailAndPassword(email, password)
+      const token = await loginResult.user.getIdToken()
+      console.log(token)
+    } catch (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password' || errorCode === 'auth/user-not-found') {
+        setAlertMessage('Wrong email or password.');
+      } else {
+        setAlertMessage(errorMessage);
+      }
+    }
+  }
+  
+  const ErrorMessageAlert = <Alert variant="outlined" severity="error"> {alertMessage} </Alert>
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -71,7 +95,7 @@ export default function SignInPage (props) {
         <img src={'logo.png'} />          
         <form className={classes.form} noValidate>
 
-        {showPwEmailAlert ? PwEmailAlert: null}
+        {alertMessage !== '' ? ErrorMessageAlert : null}
         
           <TextField
             error={noEmailError}
@@ -111,21 +135,10 @@ export default function SignInPage (props) {
             variant='contained'
             color='primary'
             className={classes.submit}
+            onClick={handleOnClick}
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href='#' variant='body2'>
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href='/sign-up' variant='body2'>
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={8}>

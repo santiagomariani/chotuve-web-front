@@ -1,22 +1,18 @@
 # pull official base image
-FROM node
+FROM node:12.18.0-alpine3.9
 
-# set working directory
-WORKDIR /app
+WORKDIR /data/
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json /data/
 
-# install app dependencies
-COPY package.json ./
-#COPY package-lock.json ./
+RUN npm cache clean --force
+RUN npm install
 
-#RUN npm cache clean -f
-#RUN npm install
-#RUN npm install react-scripts@3.4.1 -g
+ENV PATH /data/node_modules/.bin:$PATH
 
-# add app
-COPY . ./
+COPY . /data/app/
+
+WORKDIR /data/app/
 
 # start app
-CMD ["sh", "/app/docker-entrypoint.sh"]
+CMD ["sh", "/data/app/docker-entrypoint.sh"]
