@@ -76,6 +76,7 @@ export default function SignInPage (props) {
       const loginResult = await firebase.auth().signInWithEmailAndPassword(email, password)
       const token = await loginResult.user.getIdToken()
       app.loginUser(token);
+      console.log("imprimo token id: ")
       console.log(app.thereIsLoggedInUser())
       setAlertMessage('')
       history.push('/dashboard')

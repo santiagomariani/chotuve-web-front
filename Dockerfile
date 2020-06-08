@@ -10,7 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # This is to install all the dependencies
 COPY package.json ./
-COPY package-lock.json ./
+#COPY package-lock.json ./
 
 # install dependencies
 RUN npm install
