@@ -19,8 +19,10 @@ class App {
     routes() {
         return {
             login: '/',
-            home: '/home',
-            profile: '/profile'
+            dashboard: '/dashboard',
+            users: '/users',
+            resources: '/resources',
+            appServers: '/app-servers'
         }
     }
 

@@ -1,6 +1,7 @@
 import {ServerErrorResponse} from "../responses/generalResponses/ServerErrorResponse.js";
 import {GetProfileEndpoint} from "../endpoints/GetProfileEndpoint.js";
 import {LoginEndpoint} from "../endpoints/LoginEndpoint";
+import { GetUsersEndpoint } from "communication/endpoints/GetUsersEndpoint.js";
 
 
 class ApiClient {
@@ -18,6 +19,14 @@ class ApiClient {
         }
 
         return onResponse(response);
+    }
+
+    users(data, onResponse) {
+        return this._requester.call({
+            endpoint: new GetUsersEndpoint(),
+            onResponse: (response) => this._handleResponse(response, onResponse),
+            data: data
+        });
     }
 
     login(data, onResponse) {

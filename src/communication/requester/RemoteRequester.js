@@ -1,5 +1,6 @@
 import {Requester} from "./Requester.js";
 import {ErrorApiResponse} from "../responses/generalResponses/ErrorApiResponse.js";
+import {app} from "app/app";
 
 class RemoteRequester extends Requester {
     constructor(url) {
@@ -67,7 +68,10 @@ class RemoteRequester extends Requester {
         if (endpoint.contentType() && endpoint.contentType() !== "multipart/form-data") {
             headers['Content-Type'] = endpoint.contentType();
         }
-
+        
+        if (endpoint.needsAuthorization()) {
+            headers['x-access-token'] = app.thereIsLoggedInUser()
+        }
         return headers;
     }
 

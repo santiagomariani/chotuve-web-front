@@ -14,5 +14,8 @@ COPY . /data/app/
 
 WORKDIR /data/app/
 
+ENV REACT_APP_API_URL https://chotuve-auth-server-10-staging.herokuapp.com
+ENV REACT_APP_USING_FAKE_API ''
+
 # start app
 CMD ["sh", "/data/app/docker-entrypoint.sh"]

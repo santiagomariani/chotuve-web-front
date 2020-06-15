@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Menu from 'components/Menu'
 import MaterialTable from 'material-table';
+import {app} from "app/app";
 
 export default function UsersPage () {
-  const tableRef = React.createRef();
+
+  const [users, setUsers] = useState([]);
+  
+  useEffect(() => {
+    let data = {page: 2, per_page: 1}
+    app.apiClient().users(data, handleApiResponse);
+  }, []);
+  
+  function handleApiResponse(response) {
+    console.log(response.content()['users'])
+    setUsers(response.content()['users'])
+  }
   
   return (
     <Menu>
+      <ul>
+        {users.map((user) => (
+          <li key={user['id']}>{user['display_name']}</li>
+        )) }
+      </ul>
+   
+
+      {/*
       <MaterialTable        
         title="Refresh Data Preview"
         tableRef={tableRef}
@@ -49,7 +69,7 @@ export default function UsersPage () {
             onClick: () => tableRef.current && tableRef.current.onQueryChange(),
           }
         ]}
-      />
+      />*/}
     </Menu>
   )
 }
