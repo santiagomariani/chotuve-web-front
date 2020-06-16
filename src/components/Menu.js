@@ -105,6 +105,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Menu(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };

@@ -4,60 +4,43 @@ import MaterialTable from 'material-table';
 import {app} from "app/app";
 
 export default function UsersPage () {
+  const tableRef = React.createRef();
 
-  const [users, setUsers] = useState([]);
-  
-  useEffect(() => {
-    let data = {page: 2, per_page: 1}
-    app.apiClient().users(data, handleApiResponse);
-  }, []);
-  
-  function handleApiResponse(response) {
-    console.log(response.content()['users'])
-    setUsers(response.content()['users'])
-  }
-  
   return (
     <Menu>
-      <ul>
-        {users.map((user) => (
-          <li key={user['id']}>{user['display_name']}</li>
-        )) }
-      </ul>
-   
-
-      {/*
       <MaterialTable        
         title="Refresh Data Preview"
         tableRef={tableRef}
         columns={[
+          /*
           {
             title: 'Avatar',
-            field: 'avatar',
+            field: 'image_location',
             render: rowData => (
               <img
                 style={{ height: 36, borderRadius: '50%' }}
-                src={rowData.avatar}
+                src={rowData.image_location}
               />
             ),
-          },
+          },*/
           { title: 'Id', field: 'id' },
-          { title: 'First Name', field: 'first_name' },
-          { title: 'Last Name', field: 'last_name' },
+          { title: 'Display Name', field: 'display_name' },
+          { title: 'Email', field: 'email'},
+          { title: 'Phone number', field: 'phone_number' },
         ]}
         data={query =>
           new Promise((resolve, reject) => {
-            let url = 'https://reqres.in/api/users?'
-            url += 'per_page=' + query.pageSize
-            url += '&page=' + (query.page + 1)
-            fetch(url)
-              .then(response => response.json())
-              .then(result => {
-                resolve({
-                  data: result.data,
-                  page: result.page - 1,
-                  totalCount: result.total,
-                })
+            let promise = app.apiClient().users({per_page: query.pageSize,
+                                                page: query.page + 1,
+                                                email: query.search,
+                                                name: query.search,
+                                                phone: query.search
+                                                },
+                                                (response) => response.content());
+            promise.then((response) => {
+              resolve({data: response.users, 
+                    page: response.page - 1,
+                    totalCount: response.total })
               })
           })
         }
@@ -69,7 +52,7 @@ export default function UsersPage () {
             onClick: () => tableRef.current && tableRef.current.onQueryChange(),
           }
         ]}
-      />*/}
+      />
     </Menu>
   )
 }

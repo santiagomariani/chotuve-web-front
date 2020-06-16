@@ -24,9 +24,4 @@ export class GetUsersSuccessful extends SuccessfulApiResponse {
                         ]
         }
     }
-
-    usersData() {
-        const data = this.content()['users'];
-        return data
-    }
 }

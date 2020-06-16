@@ -101,7 +101,6 @@ export default function SignInPage (props) {
         <form className={classes.form} noValidate>
 
         {alertMessage !== '' ? ErrorMessageAlert : null}
-        
           <TextField
             error={noEmailError}
             FormHelperTextProps={{ error: noEmailError }}
