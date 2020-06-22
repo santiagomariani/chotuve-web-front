@@ -1,8 +1,13 @@
 import {Endpoint} from "./Endpoint.js";
 
-export class GetUsersEndpoint extends Endpoint {
+export class ModifyUserEndpoint extends Endpoint {
+    constructor(userId) {
+        super();
+        this.userId = userId;
+    }
+
     url() {
-        return '/users'
+        return '/users/' + this.userId
     }
     
     /*
@@ -12,7 +17,7 @@ export class GetUsersEndpoint extends Endpoint {
     */
 
     method() {
-        return 'GET'
+        return 'PUT'
     }
 
     needsAuthorization() {

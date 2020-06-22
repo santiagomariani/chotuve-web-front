@@ -2,7 +2,7 @@ import {ServerErrorResponse} from "../responses/generalResponses/ServerErrorResp
 import {GetProfileEndpoint} from "../endpoints/GetProfileEndpoint.js";
 import {LoginEndpoint} from "../endpoints/LoginEndpoint";
 import { GetUsersEndpoint } from "communication/endpoints/GetUsersEndpoint.js";
-
+import { ModifyUserEndpoint } from "communication/endpoints/ModifyUserEndpoint.js";
 
 class ApiClient {
     constructor(requester, onServerErrorDo = () => {
@@ -41,6 +41,14 @@ class ApiClient {
         return this._requester.call({
             endpoint: new GetProfileEndpoint(),
             onResponse: (response) => this._handleResponse(response, onResponse)
+        });
+    }
+
+    modifyUser(data, onResponse, userId) {
+        return this._requester.call({
+            endpoint: new ModifyUserEndpoint(userId),
+            onResponse: (response) => this._handleResponse(response, onResponse),
+            data: data
         });
     }
 }

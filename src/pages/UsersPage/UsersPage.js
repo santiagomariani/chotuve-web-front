@@ -23,10 +23,10 @@ export default function UsersPage () {
               />
             ),
           },*/
-          { title: 'Id', field: 'id' },
-          { title: 'Display Name', field: 'display_name' },
-          { title: 'Email', field: 'email'},
-          { title: 'Phone number', field: 'phone_number' },
+          { title: 'Id', field: 'id', editable: 'never' },
+          { title: 'Display Name', field: 'display_name', editable: 'onUpdate'},
+          { title: 'Email', field: 'email', editable: 'never'},
+          { title: 'Phone number', field: 'phone_number', editable: 'onUpdate' },
         ]}
         data={query =>
           new Promise((resolve, reject) => {
@@ -52,6 +52,19 @@ export default function UsersPage () {
             onClick: () => tableRef.current && tableRef.current.onQueryChange(),
           }
         ]}
+        editable={{
+        onRowUpdate: (newData, oldData) =>
+          new Promise((resolve, reject) => {
+            let promise = app.apiClient().modifyUser({'display_name': newData.display_name,
+                                                      'phone_number': newData.phone_number},
+                                                      (response) => response.content(), oldData.id)
+            promise.then((response) => {
+              resolve();
+            }).catch((error) => {
+              console.log(error)
+              reject();})
+          })
+      }}
       />
     </Menu>
   )

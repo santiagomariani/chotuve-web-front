@@ -3,7 +3,7 @@ import {LoginSuccessful} from "../responses/login/LoginSuccessful";
 import {InvalidCredentials} from "../responses/login/InvalidCredentials";
 
 export class LoginEndpoint extends Endpoint {
-    static url() {
+    url() {
         return '/login'
     }
 

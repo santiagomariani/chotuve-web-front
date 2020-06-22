@@ -1,7 +1,7 @@
 import {SuccessfulApiResponse} from "../responses/generalResponses/SuccessfulApiResponse.js";
 
 export class Endpoint {
-    static url() {
+    url() {
         throw new Error("You have to implement the method");
     }
 
@@ -21,10 +21,6 @@ export class Endpoint {
             Own responses have more precedence over the general responses
         "*/
         return this.ownResponses().concat(this.generalResponses())
-    }
-
-    url() {
-        return this.constructor.url();
     }
 
     contentType() {
