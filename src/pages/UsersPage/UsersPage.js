@@ -24,9 +24,10 @@ export default function UsersPage () {
             ),
           },*/
           { title: 'Id', field: 'id', editable: 'never' },
-          { title: 'Display Name', field: 'display_name', editable: 'onUpdate'},
-          { title: 'Email', field: 'email', editable: 'never'},
-          { title: 'Phone number', field: 'phone_number', editable: 'onUpdate' },
+          { title: 'Display Name', field: 'display_name'},
+          { title: 'Email', field: 'email', editable: 'onAdd'},
+          { title: 'Phone number', field: 'phone_number'},
+          { title: 'Password', field: 'password', emptyValue: '************'}
         ]}
         data={query =>
           new Promise((resolve, reject) => {
@@ -53,6 +54,19 @@ export default function UsersPage () {
           }
         ]}
         editable={{
+        onRowAdd: (newData) =>
+          new Promise((resolve, reject) => {
+            let promise = app.apiClient().addUser({'password': newData.password,
+                                                  'email': newData.email,
+                                                  'display_name': newData.display_name,
+                                                  'phone_number': newData.phone_number},
+                                                  (response) => response.content())                             
+            promise.then((response) => {
+              resolve();
+            }).catch((error) => {
+              console.log(error)
+              reject();})
+          }),
         onRowUpdate: (newData, oldData) => 
           new Promise((resolve, reject) => {
             let promise = app.apiClient().modifyUser({'display_name': newData.display_name,

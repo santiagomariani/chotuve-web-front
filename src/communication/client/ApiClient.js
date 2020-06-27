@@ -4,6 +4,7 @@ import {LoginEndpoint} from "../endpoints/LoginEndpoint";
 import { GetUsersEndpoint } from "communication/endpoints/GetUsersEndpoint.js";
 import { ModifyUserEndpoint } from "communication/endpoints/ModifyUserEndpoint.js";
 import { DeleteUserEndpoint } from "communication/endpoints/DeleteUserEndpoint.js";
+import { AddUserEndpoint } from "communication/endpoints/AddUserEndpoint.js";
 
 class ApiClient {
     constructor(requester, onServerErrorDo = () => {
@@ -58,6 +59,14 @@ class ApiClient {
             endpoint: new DeleteUserEndpoint(userId),
             onResponse: (response) => this._handleResponse(response, onResponse)
         });
+    }
+
+    addUser(data, onResponse) {
+        return this._requester.call({
+            endpoint: new AddUserEndpoint(),
+            onResponse: (response) => this._handleResponse(response, onResponse),
+            data: data
+        }); 
     }
 }
 

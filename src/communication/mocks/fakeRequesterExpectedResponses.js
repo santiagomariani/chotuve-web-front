@@ -8,6 +8,10 @@ import { ModifyUserEndpoint } from "../endpoints/ModifyUserEndpoint";
 import { ModifyUserSuccessful } from "../responses/users/ModifyUserSuccessful"; 
 import { DeleteUserEndpoint } from "communication/endpoints/DeleteUserEndpoint";
 import { DeleteUserSuccessful } from "../responses/users/DeleteUserSuccessful";
+import { AddUserEndpoint } from "communication/endpoints/AddUserEndpoint";
+import { AddUserSuccessful } from "../responses/users/AddUserSuccessful";
+
+
 
 
 
@@ -17,7 +21,8 @@ const fakeRequesterExpectedResponses = () => {
         [LoginEndpoint.name]: LoginSuccessful,
         [GetUsersEndpoint.name]: GetUsersSuccessful,
         [ModifyUserEndpoint.name]: ModifyUserSuccessful, 
-        [DeleteUserEndpoint.name]: DeleteUserSuccessful
+        [DeleteUserEndpoint.name]: DeleteUserSuccessful,
+        [AddUserEndpoint.name]: AddUserSuccessful 
     }
 };
 
