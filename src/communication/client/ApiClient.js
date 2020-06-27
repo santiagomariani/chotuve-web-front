@@ -3,6 +3,7 @@ import {GetProfileEndpoint} from "../endpoints/GetProfileEndpoint.js";
 import {LoginEndpoint} from "../endpoints/LoginEndpoint";
 import { GetUsersEndpoint } from "communication/endpoints/GetUsersEndpoint.js";
 import { ModifyUserEndpoint } from "communication/endpoints/ModifyUserEndpoint.js";
+import { DeleteUserEndpoint } from "communication/endpoints/DeleteUserEndpoint.js";
 
 class ApiClient {
     constructor(requester, onServerErrorDo = () => {
@@ -49,6 +50,13 @@ class ApiClient {
             endpoint: new ModifyUserEndpoint(userId),
             onResponse: (response) => this._handleResponse(response, onResponse),
             data: data
+        });
+    }
+
+    deleteUser(onResponse, userId) {
+        return this._requester.call({
+            endpoint: new DeleteUserEndpoint(userId),
+            onResponse: (response) => this._handleResponse(response, onResponse)
         });
     }
 }

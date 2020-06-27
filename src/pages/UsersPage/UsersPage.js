@@ -53,11 +53,20 @@ export default function UsersPage () {
           }
         ]}
         editable={{
-        onRowUpdate: (newData, oldData) =>
+        onRowUpdate: (newData, oldData) => 
           new Promise((resolve, reject) => {
             let promise = app.apiClient().modifyUser({'display_name': newData.display_name,
                                                       'phone_number': newData.phone_number},
                                                       (response) => response.content(), oldData.id)
+            promise.then((response) => {
+              resolve();
+            }).catch((error) => {
+              console.log(error)
+              reject();})
+          }),
+        onRowDelete: (oldData) =>
+          new Promise((resolve, reject) => {
+            let promise = app.apiClient().deleteUser((response) => null, oldData.id)
             promise.then((response) => {
               resolve();
             }).catch((error) => {
