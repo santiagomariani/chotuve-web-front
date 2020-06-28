@@ -9,7 +9,7 @@ export default function UsersPage () {
   return (
     <Menu>
       <MaterialTable        
-        title="Refresh Data Preview"
+        title="Users Management"
         tableRef={tableRef}
         columns={[
           /*
@@ -25,7 +25,7 @@ export default function UsersPage () {
           },*/
           { title: 'Id', field: 'id', editable: 'never' },
           { title: 'Display Name', field: 'display_name'},
-          { title: 'Email', field: 'email', editable: 'onAdd'},
+          { title: 'Email', field: 'email'},
           { title: 'Phone number', field: 'phone_number'},
           { title: 'Password', field: 'password', emptyValue: '************'}
         ]}
@@ -69,8 +69,10 @@ export default function UsersPage () {
           }),
         onRowUpdate: (newData, oldData) => 
           new Promise((resolve, reject) => {
-            let promise = app.apiClient().modifyUser({'display_name': newData.display_name,
-                                                      'phone_number': newData.phone_number},
+            let promise = app.apiClient().modifyUser({'password': newData.password,
+                                                    'email': newData.email,
+                                                    'display_name': newData.display_name,
+                                                    'phone_number': newData.phone_number},
                                                       (response) => response.content(), oldData.id)
             promise.then((response) => {
               resolve();
