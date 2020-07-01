@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import Menu from 'components/Menu'
 import MaterialTable from 'material-table';
 import {app} from "app/app";
+import Alert from '@material-ui/lab/Alert';
 
 export default function UsersPage () {
   const tableRef = React.createRef();
+  const [alert, setAlert] = useState(false);
 
   return (
     <Menu>
+      {alert ? <Alert onClose={() => {setAlert(false)}} style={{marginBottom: '15px'}} variant="outlined" severity="error"> {"Cannot modify email or password if user does not have email provider."} </Alert> : null}
       <MaterialTable        
         title="Users Management"
         tableRef={tableRef}
@@ -50,7 +53,9 @@ export default function UsersPage () {
             icon: 'refresh',
             tooltip: 'Refresh Data',
             isFreeAction: true,
-            onClick: () => tableRef.current && tableRef.current.onQueryChange(),
+            onClick: () => {
+              tableRef.current && tableRef.current.onQueryChange()
+              setAlert(false)},
           }
         ]}
         editable={{
@@ -62,6 +67,7 @@ export default function UsersPage () {
                                                   'phone_number': newData.phone_number},
                                                   (response) => response.content())                             
             promise.then((response) => {
+              setAlert(false)
               resolve();
             }).catch((error) => {
               console.log(error)
@@ -75,6 +81,11 @@ export default function UsersPage () {
                                                     'phone_number': newData.phone_number},
                                                       (response) => response.content(), oldData.id)
             promise.then((response) => {
+              if ('message' in response) {
+                setAlert(true)
+              } else {
+                setAlert(false)
+              }
               resolve();
             }).catch((error) => {
               console.log(error)
@@ -84,6 +95,7 @@ export default function UsersPage () {
           new Promise((resolve, reject) => {
             let promise = app.apiClient().deleteUser((response) => null, oldData.id)
             promise.then((response) => {
+              setAlert(false)
               resolve();
             }).catch((error) => {
               console.log(error)
