@@ -5,6 +5,8 @@ WORKDIR /data/
 
 COPY package*.json /data/
 
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
 RUN npm cache clean --force
 RUN npm install
 
