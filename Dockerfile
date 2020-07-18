@@ -1,7 +1,7 @@
 # PRODUCTION 
 
 # base image
-FROM node as build
+FROM node:12.18.0-alpine3.9 as build
 
 WORKDIR /app
 
