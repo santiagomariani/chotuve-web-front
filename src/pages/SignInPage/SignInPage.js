@@ -79,7 +79,15 @@ export default function SignInPage (props) {
       console.log("imprimo token id: ")
       console.log(app.thereIsLoggedInUser())
       setAlertMessage('')
-      history.push('/dashboard')
+      app.apiClient().getUserAdminInfo((response) => response.content())
+                     .then((content) => {
+        if (content.admin) {
+          history.push('/dashboard')
+        } else {
+          app.logoutUser();
+          setAlertMessage("User is not admin.")
+        }
+      })
     } catch (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
