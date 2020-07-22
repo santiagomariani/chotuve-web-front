@@ -17,7 +17,7 @@ export class ModifyUserEndpoint extends Endpoint {
     */
 
     method() {
-        return 'PUT'
+        return 'PATCH'
     }
 
     needsAuthorization() {
