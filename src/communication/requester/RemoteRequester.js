@@ -8,14 +8,14 @@ class RemoteRequester extends Requester {
         this._baseUrl = url;
     }
 
-    call({endpoint, onResponse, data = undefined}) {
+    async call({endpoint, onResponse, data = undefined}) {
         const request = this._buildRequest(endpoint, data);
         let url = endpoint.url();
         if (endpoint.method() === 'GET' && data) {
             url += "?" + this._dataToQueryString(data);
         }
 
-        return fetch(this._baseUrl + url, request).then(result => result.json())
+        return await fetch(this._baseUrl + url, request).then(result => result.json())
             .then(jsonResponse => {
                 return onResponse(this._buildResponse(jsonResponse, endpoint));
             })
