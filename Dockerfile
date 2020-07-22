@@ -42,7 +42,7 @@ COPY react-nginx.template /etc/nginx/conf.d
 
 COPY docker-entrypoint-prod.sh /
 
-ENV REACT_APP_API_URL https://chotuve-auth-server-10-staging.herokuapp.com
+ENV REACT_APP_API_URL https://chotuve-appserver-staging.herokuapp.com
 ENV REACT_APP_USING_FAKE_API ''
 
 ENTRYPOINT ["sh", "/docker-entrypoint-prod.sh"]
