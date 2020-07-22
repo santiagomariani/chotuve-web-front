@@ -1,6 +1,4 @@
 import {ServerErrorResponse} from "../responses/generalResponses/ServerErrorResponse.js";
-import {GetProfileEndpoint} from "../endpoints/GetProfileEndpoint.js";
-import {LoginEndpoint} from "../endpoints/LoginEndpoint";
 import { GetUsersEndpoint } from "communication/endpoints/GetUsersEndpoint.js";
 import { ModifyUserEndpoint } from "communication/endpoints/ModifyUserEndpoint.js";
 import { DeleteUserEndpoint } from "communication/endpoints/DeleteUserEndpoint.js";
@@ -29,21 +27,6 @@ class ApiClient {
             endpoint: new GetUsersEndpoint(),
             onResponse: (response) => this._handleResponse(response, onResponse),
             data: data
-        });
-    }
-
-    login(data, onResponse) {
-        return this._requester.call({
-            endpoint: new LoginEndpoint(),
-            onResponse: (response) => this._handleResponse(response, onResponse),
-            data: data
-        });
-    }
-
-    getProfile(onResponse) {
-        return this._requester.call({
-            endpoint: new GetProfileEndpoint(),
-            onResponse: (response) => this._handleResponse(response, onResponse)
         });
     }
 
