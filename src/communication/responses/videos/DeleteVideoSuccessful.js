@@ -1,8 +1,8 @@
 import {SuccessfulApiResponse} from "../generalResponses/SuccessfulApiResponse.js";
 
-export class DeleteUserSuccessful extends SuccessfulApiResponse {
+export class DeleteVideoSuccessful extends SuccessfulApiResponse {
     
     static defaultResponse() {
-        return { 'message': 'OK' }
+        return {'message': 'OK'}
     }
 }

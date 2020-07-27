@@ -40,14 +40,6 @@ export default function MainList () {
             <ListItemText primary="Users" />
           </ListItem>
         </MenuLink>
-        <MenuLink href="/app-servers">
-          <ListItem button>
-            <ListItemIcon>
-              <PhoneIphoneIcon />
-            </ListItemIcon>
-            <ListItemText primary="App servers" />
-          </ListItem>
-        </MenuLink>
       </div>
     )
   }

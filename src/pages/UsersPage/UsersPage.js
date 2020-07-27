@@ -14,6 +14,9 @@ export default function UsersPage () {
       <MaterialTable        
         title="Users Management"
         tableRef={tableRef}
+        options={{
+          sorting: false
+        }}
         columns={[
           /*
           {

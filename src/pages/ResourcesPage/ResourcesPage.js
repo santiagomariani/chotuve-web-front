@@ -14,6 +14,9 @@ export default function ResourcesPage () {
       <MaterialTable        
         title="Videos Management"
         tableRef={tableRef}
+        options={{
+          sorting: false
+        }}
         columns={[
           /*
           {
@@ -26,23 +29,22 @@ export default function ResourcesPage () {
               />
             ),
           },*/
-          { title: 'Id', field: 'id', editable: 'never' },
-          { title: 'Video name', field: 'display_name'},
-          { title: 'Description', field: 'email'},
-          { title: 'Date', field: 'phone_number'},
+          { title: 'Id', field: 'video_id', editable: 'never' },
+          { title: 'Video name', field: 'title'},
+          { title: 'Description', field: 'description'},
+          { title: 'Location', field: 'location'},
+          { title: 'Is private', field: 'is_private', type: 'boolean'}
         
         ]}
         data={query =>
           new Promise((resolve, reject) => {
-            let promise = app.apiClient().users({per_page: query.pageSize,
+            let promise = app.apiClient().videos({per_page: query.pageSize,
                                                 page: query.page + 1,
-                                                email: query.search,
-                                                name: query.search,
-                                                phone: query.search
+                                                search: query.search
                                                 },
                                                 (response) => response.content());
             promise.then((response) => {
-              resolve({data: response.users, 
+              resolve({data: response.videos, 
                     page: response.page - 1,
                     totalCount: response.total })
               })
@@ -59,27 +61,13 @@ export default function ResourcesPage () {
           }
         ]}
         editable={{
-        onRowAdd: (newData) =>
-          new Promise((resolve, reject) => {
-            let promise = app.apiClient().addUser({'password': newData.password,
-                                                  'email': newData.email,
-                                                  'display_name': newData.display_name,
-                                                  'phone_number': newData.phone_number},
-                                                  (response) => response.content())                             
-            promise.then((response) => {
-              setAlert(false)
-              resolve();
-            }).catch((error) => {
-              console.log(error)
-              reject();})
-          }),
         onRowUpdate: (newData, oldData) => 
           new Promise((resolve, reject) => {
-            let promise = app.apiClient().modifyUser({'password': newData.password,
-                                                    'email': newData.email,
-                                                    'display_name': newData.display_name,
-                                                    'phone_number': newData.phone_number},
-                                                      (response) => response.content(), oldData.id)
+            let promise = app.apiClient().modifyVideo({'title': newData.title,
+                                                    'location': newData.location,
+                                                    'is_private': newData.is_private,
+                                                    'description': newData.description},
+                                                      (response) => response.content(), oldData.video_id)
             promise.then((response) => {
               if ('message' in response) {
                 setAlert(true)
@@ -93,7 +81,7 @@ export default function ResourcesPage () {
           }),
         onRowDelete: (oldData) =>
           new Promise((resolve, reject) => {
-            let promise = app.apiClient().deleteUser((response) => null, oldData.id)
+            let promise = app.apiClient().deleteVideo((response) => null, oldData.video_id)
             promise.then((response) => {
               setAlert(false)
               resolve();

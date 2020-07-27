@@ -6,10 +6,6 @@ export class CheckUserIsAdminEndpoint extends Endpoint {
         return '/users/admin'
     }
 
-    ownResponses() {
-        return [GetUserAdminInfoSuccessful];
-    }
-
     method() {
         return 'GET'
     }

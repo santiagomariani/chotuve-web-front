@@ -4,7 +4,7 @@ export class GetUserAdminInfoSuccessful extends SuccessfulApiResponse {
     
     static defaultResponse() {
         return {
-                "admin": "True"
+                "admin": true
         }
     }
 }

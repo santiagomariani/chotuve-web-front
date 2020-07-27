@@ -81,6 +81,9 @@ export default function SignInPage (props) {
       setAlertMessage('')
       app.apiClient().getUserAdminInfo((response) => response.content())
                      .then((content) => {
+        console.log("hola")
+        console.log(content)
+        console.log("holaa")
         if (content.admin) {
           history.push('/dashboard')
         } else {

@@ -19,7 +19,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "recharts": "^1.8.5",
-    "typeface-roboto": "0.0.75"
+    "typeface-roboto": "0.0.75",
+    "mdbreact": "4.27.0",
+    "react-vis": "1.11.7",
+    "react-fittext": "1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -32,9 +32,6 @@ class Routes extends Component {
                 <PrivateRoute path="/resources">
                     <ResourcesPage></ResourcesPage>
                 </PrivateRoute>
-                <PrivateRoute path="/app-servers">
-                    <AppServersPage></AppServersPage>
-                </PrivateRoute>
                 <PrivateRoute path="/users">
                     <UsersPage></UsersPage>
                 </PrivateRoute>
