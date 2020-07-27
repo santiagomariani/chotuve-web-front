@@ -21,14 +21,22 @@ export default function PrivateVsPublicVideos({data}) {
           ]
         }
       ]
+    },
+    pieChartOptions: {
+      legend: {
+        labels: {
+          fontColor: 'white'
+        } 
+      },
+      responsive: true
     }
   }
-
+  config.dataPie.datasets[0].data[1] = config.dataPie.datasets[0].data[1] - config.dataPie.datasets[0].data[0]
   return (
   <MDBContainer>
     <Title>Public vs Private videos</Title>
     <div>
-      <Pie data={config.dataPie} options={{ responsive: true }} />
+      <Pie data={config.dataPie} options={config.pieChartOptions} />
     </div>
   </MDBContainer>
   );

@@ -29,6 +29,14 @@ export default function RequestPerMethod({data}) {
           ]
         }
       ]
+    },
+    pieChartOptions: {
+      legend: {
+        labels: {
+          fontColor: 'white'
+        } 
+      },
+      responsive: true
     }
   }
   
@@ -47,7 +55,7 @@ export default function RequestPerMethod({data}) {
   <MDBContainer>
     <Title>Request per method</Title>
     <div>
-      <Pie data={config.dataPie} options={{ responsive: true }} />
+      <Pie data={config.dataPie} options={config.pieChartOptions} />
     </div>
   </MDBContainer>
   );

@@ -3,13 +3,30 @@ import { Bar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import Title from 'components/Title';
 
-export default function RequestPerHour ({data}) {
+
+function sortObject(list) {
+  var sortable = [];
+  for (var key in list) {
+      sortable.push([key, list[key]]);
+  }
+
+  sortable.sort(function(a, b) {
+      return (a[1] > b[1] ? -1 : (a[1] > b[1] ? 1 : 0));
+  });
+
+  var orderedList = {};
+  for (var idx in sortable) {
+      orderedList[sortable[idx][0]] = sortable[idx][1];
+  }
+
+  return orderedList;
+}
+
+export default function Top10ErrorsLast30Days({data, title}) {
 
   let config = {
     dataBar: {
-      labels: ["0", "1", "2", "3", "4", "5", "6", "7", "8",
-               "9", "10", "11", "12", "13", "14", "15",
-               "16", "17", "18", "19", "20", "21", "22", "23"],
+      labels: [],
       datasets: [
         {
           label: "Request per hour",
@@ -24,38 +41,10 @@ export default function RequestPerHour ({data}) {
             "rgba(101, 206,42,1)",
             "rgba(101, 206,42,1)",
             "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
             "rgba(101, 206,42,1)"
           ],
           borderWidth: 2,
           borderColor: [
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
-            "rgba(101, 150,42,1)",
             "rgba(101, 150,42,1)",
             "rgba(101, 150,42,1)",
             "rgba(101, 150,42,1)",
@@ -98,31 +87,24 @@ export default function RequestPerHour ({data}) {
               color: "rgba(0, 0, 0, 0.1)"
             },
             ticks: {
-              beginAtZero: true
-            },
-            ticks: {
+              beginAtZero: true,
               fontColor: 'white'
-            }
+            },
           }
         ]
       }
     }
   };
-
-
-  let tempData = []
-  for (let i = 0; i < 24; i++) {
-    if (!data[i.toString() + '.0']) {
-      tempData.push(0)
-    } else {
-      tempData.push(data[i.toString() + '.0'])
-    }
-  }
-  config.dataBar.datasets[0].data = tempData;
+  let tempData = sortObject(data)
+  config.dataBar.labels = Object.keys(tempData).slice(0, 10)
+  config.dataBar.datasets[0].data = Object.values(tempData).slice(0, 10)
+  console.log(tempData)
+  console.log(config.dataBar.labels)
+  console.log(config.dataBar.datasets[0].data)
   return (
     <div>
     <MDBContainer>
-      <Title>Request Per Hour</Title>
+      <Title>{title}</Title>
       <div>
       <Bar data={config.dataBar} options={config.barChartOptions} />
       </div>

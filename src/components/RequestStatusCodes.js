@@ -35,6 +35,11 @@ export default function RequestStatusCodes ({data}) {
       ]
     },
     barChartOptions: {
+      legend: {
+        labels: {
+          fontColor: 'white'
+        } 
+      },
       responsive: true,
       maintainAspectRatio: false,
       scales: {
@@ -44,6 +49,9 @@ export default function RequestStatusCodes ({data}) {
             gridLines: {
               display: true,
               color: "rgba(0, 0, 0, 0.1)"
+            },
+            ticks: {
+              fontColor: 'white'
             }
           }
         ],
@@ -54,7 +62,8 @@ export default function RequestStatusCodes ({data}) {
               color: "rgba(0, 0, 0, 0.1)"
             },
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              fontColor: 'white'
             }
           }
         ]
