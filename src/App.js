@@ -20,6 +20,9 @@ const theme = createMuiTheme({
     },
     type: 'dark'
   },
+  typography: {
+    fontFamily: 'Roboto,Montserrat'
+  }
 });
 
 function App() {

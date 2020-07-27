@@ -81,9 +81,6 @@ export default function SignInPage (props) {
       setAlertMessage('')
       app.apiClient().getUserAdminInfo((response) => response.content())
                      .then((content) => {
-        console.log("hola")
-        console.log(content)
-        console.log("holaa")
         if (content.admin) {
           history.push('/dashboard')
         } else {
@@ -108,7 +105,14 @@ export default function SignInPage (props) {
     <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
-        <img src={'logo.png'} />          
+        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid item>
+          <img width='60px' heigth='60px' src={'logo.png'} />
+        </Grid>
+        <Grid item style={{'marginLeft': '20px'}}>
+          <Typography style={{'fontFamily': 'Montserrat'}} variant='h3'>Chotuve</Typography>
+        </Grid>
+        </Grid>
         <form className={classes.form} noValidate>
 
         {alertMessage !== '' ? ErrorMessageAlert : null}
