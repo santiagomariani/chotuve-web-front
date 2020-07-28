@@ -110,7 +110,7 @@ export default function SignInPage (props) {
           <img width='60px' heigth='60px' src={'logo.png'} />
         </Grid>
         <Grid item style={{'marginLeft': '20px'}}>
-          <Typography style={{'fontFamily': 'Montserrat'}} variant='h3'>Chotuve</Typography>
+          <Typography style={{'fontFamily': 'Montserrat', 'fontWeight': '550'}} variant='h3'>Chotuve</Typography>
         </Grid>
         </Grid>
         <form className={classes.form} noValidate>

@@ -13,23 +13,23 @@ export default function RequestStatusCodes ({data}) {
           label: "Request per status code",
           data: [],
           backgroundColor: [
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)"
+            "#5ec447",
+            "#5ec447",
+            "#5ec447",
+            "#5ec447",
+            "#5ec447",
+            "#5ec447",
+            "#5ec447"
           ],
           borderWidth: 2,
           borderColor: [
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)",
-            "rgba(101, 206,42,1)"
+            "#4b9c39",
+            "#4b9c39",
+            "#4b9c39",
+            "#4b9c39",
+            "#4b9c39",
+            "#4b9c39",
+            "#4b9c39"
           ]
         }
       ]
