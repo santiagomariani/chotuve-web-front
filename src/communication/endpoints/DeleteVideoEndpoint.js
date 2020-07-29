@@ -1,26 +1,26 @@
-import {Endpoint} from "./Endpoint.js";
+import { Endpoint } from "./Endpoint.js";
 
 export class DeleteVideoEndpoint extends Endpoint {
-    constructor(videoId) {
-        super();
-        this.videoId = videoId;
-    }
+  constructor(videoId) {
+    super();
+    this.videoId = videoId;
+  }
 
-    url() {
-        return '/videos/' + this.videoId
-    }
-    
-    /*
+  url() {
+    return "/videos/" + this.videoId;
+  }
+
+  /*
     ownResponses() {
         return [];
     }
     */
 
-    method() {
-        return 'DELETE'
-    }
+  method() {
+    return "DELETE";
+  }
 
-    needsAuthorization() {
-        return true;
-    }
+  needsAuthorization() {
+    return true;
+  }
 }

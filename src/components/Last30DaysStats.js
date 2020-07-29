@@ -1,15 +1,43 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
-import Title from 'components/Title';
+import Title from "components/Title";
 
-export default function Last30DaysStats({data, title}) {
+export default function Last30DaysStats({ data, title }) {
   const config = {
     dataLine: {
-      labels: ["1", "2", "3", "4", "5", "6", "7", "8",
-               "9", "10", "11", "12", "13", "14", "15",
-               "16", "17", "18", "19", "20", "21", "22",
-               "23", "24", "25", "26", "27", "28", "29", "30"],
+      labels: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+      ],
       datasets: [
         {
           label: title,
@@ -30,16 +58,16 @@ export default function Last30DaysStats({data, title}) {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: []
-        }
-      ]
+          data: [],
+        },
+      ],
     },
     lineChartOptions: {
       responsive: true,
       legend: {
         labels: {
-          fontColor: 'white'
-        } 
+          fontColor: "white",
+        },
       },
       scales: {
         xAxes: [
@@ -47,38 +75,36 @@ export default function Last30DaysStats({data, title}) {
             barPercentage: 1,
             gridLines: {
               display: true,
-              color: "rgba(0, 0, 0, 0.1)"
+              color: "rgba(0, 0, 0, 0.1)",
             },
             ticks: {
-              fontColor: 'white'
-            }
-          }
+              fontColor: "white",
+            },
+          },
         ],
         yAxes: [
           {
             gridLines: {
               display: true,
-              color: "rgba(0, 0, 0, 0.1)"
+              color: "rgba(0, 0, 0, 0.1)",
             },
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              fontColor: "white",
             },
-            ticks: {
-              fontColor: 'white'
-            }
-          }
-        ]
-      }
-    }
+          },
+        ],
+      },
+    },
   };
 
-  let labels = config.dataLine.labels
-  let tempData = []
+  let labels = config.dataLine.labels;
+  let tempData = [];
   for (let i = 0; i < labels.length; i++) {
-    if (!data[labels[i] + '.0']) {
-      tempData.push(0)
+    if (!data[labels[i] + ".0"]) {
+      tempData.push(0);
     } else {
-      tempData.push(data[labels[i] + '.0'])
+      tempData.push(data[labels[i] + ".0"]);
     }
   }
   config.dataLine.datasets[0].data = tempData;
@@ -87,7 +113,11 @@ export default function Last30DaysStats({data, title}) {
     <MDBContainer>
       <Title>{title}</Title>
       <div>
-        <Line data={config.dataLine}  style={{'width':'800px', 'height': '300px', 'overflow': 'hidden'}} options={config.lineChartOptions} />
+        <Line
+          data={config.dataLine}
+          style={{ width: "800px", height: "300px", overflow: "hidden" }}
+          options={config.lineChartOptions}
+        />
       </div>
     </MDBContainer>
   );

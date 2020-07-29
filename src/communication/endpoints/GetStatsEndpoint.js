@@ -1,12 +1,12 @@
-import {Endpoint} from "./Endpoint.js";
+import { Endpoint } from "./Endpoint.js";
 
 export class GetStatsEndpoint extends Endpoint {
   url() {
-    return '/stats'
+    return "/stats";
   }
 
   method() {
-    return 'GET'
+    return "GET";
   }
 
   needsAuthorization() {

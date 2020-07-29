@@ -1,37 +1,37 @@
-import {SuccessfulApiResponse} from "../responses/generalResponses/SuccessfulApiResponse.js";
+import { SuccessfulApiResponse } from "../responses/generalResponses/SuccessfulApiResponse.js";
 
 export class Endpoint {
-    url() {
-        throw new Error("You have to implement the method");
-    }
+  url() {
+    throw new Error("You have to implement the method");
+  }
 
-    generalResponses() {
-        return [SuccessfulApiResponse]
-    }
+  generalResponses() {
+    return [SuccessfulApiResponse];
+  }
 
-    ownResponses() {
-        /*
+  ownResponses() {
+    /*
             Override this in order to provide custom responses
         "*/
-        return []
-    }
+    return [];
+  }
 
-    responses() {
-        /*
+  responses() {
+    /*
             Own responses have more precedence over the general responses
         "*/
-        return this.ownResponses().concat(this.generalResponses())
-    }
+    return this.ownResponses().concat(this.generalResponses());
+  }
 
-    contentType() {
-        return 'application/json';
-    }
+  contentType() {
+    return "application/json";
+  }
 
-    method() {
-        throw new Error("You have to implement the method");
-    }
+  method() {
+    throw new Error("You have to implement the method");
+  }
 
-    needsAuthorization() {
-        throw new Error("You have to implement the method");
-    }
+  needsAuthorization() {
+    throw new Error("You have to implement the method");
+  }
 }

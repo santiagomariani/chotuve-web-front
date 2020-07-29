@@ -1,21 +1,21 @@
-import {Endpoint} from "./Endpoint.js";
+import { Endpoint } from "./Endpoint.js";
 
 export class GetVideosEndpoint extends Endpoint {
-    url() {
-        return '/videos'
-    }
-    
-    /*
+  url() {
+    return "/videos";
+  }
+
+  /*
     ownResponses() {
         return [];
     }
     */
 
-    method() {
-        return 'GET'
-    }
+  method() {
+    return "GET";
+  }
 
-    needsAuthorization() {
-        return true;
-    }
+  needsAuthorization() {
+    return true;
+  }
 }

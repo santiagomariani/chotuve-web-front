@@ -21,7 +21,7 @@ script:
 
 deploy:
   provider: script
-  script: 
+  script:
     # push to dockerhub & heroku
     docker push santiagomariani/chotuve-web-front;
     docker push registry.heroku.com/$HEROKU_WEB_APP_NAME/web;

@@ -1,10 +1,9 @@
-import {SuccessfulApiResponse} from "../generalResponses/SuccessfulApiResponse.js";
+import { SuccessfulApiResponse } from "../generalResponses/SuccessfulApiResponse.js";
 
 export class GetUserAdminInfoSuccessful extends SuccessfulApiResponse {
-    
-    static defaultResponse() {
-        return {
-                "admin": true
-        }
-    }
+  static defaultResponse() {
+    return {
+      admin: true,
+    };
+  }
 }

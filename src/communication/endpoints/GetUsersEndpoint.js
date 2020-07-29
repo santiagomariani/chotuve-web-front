@@ -1,21 +1,21 @@
-import {Endpoint} from "./Endpoint.js";
+import { Endpoint } from "./Endpoint.js";
 
 export class GetUsersEndpoint extends Endpoint {
-    url() {
-        return '/users'
-    }
-    
-    /*
+  url() {
+    return "/users";
+  }
+
+  /*
     ownResponses() {
         return [];
     }
     */
 
-    method() {
-        return 'GET'
-    }
+  method() {
+    return "GET";
+  }
 
-    needsAuthorization() {
-        return true;
-    }
+  needsAuthorization() {
+    return true;
+  }
 }

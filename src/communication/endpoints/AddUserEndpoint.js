@@ -1,21 +1,21 @@
-import {Endpoint} from "./Endpoint.js";
+import { Endpoint } from "./Endpoint.js";
 
 export class AddUserEndpoint extends Endpoint {
-    url() {
-        return '/users'
-    }
-    
-    /*
+  url() {
+    return "/users";
+  }
+
+  /*
     ownResponses() {
         return [];
     }
     */
 
-    method() {
-        return 'POST'
-    }
+  method() {
+    return "POST";
+  }
 
-    needsAuthorization() {
-        return true;
-    }
+  needsAuthorization() {
+    return true;
+  }
 }

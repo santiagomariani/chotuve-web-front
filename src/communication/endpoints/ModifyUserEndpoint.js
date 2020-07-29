@@ -1,26 +1,26 @@
-import {Endpoint} from "./Endpoint.js";
+import { Endpoint } from "./Endpoint.js";
 
 export class ModifyUserEndpoint extends Endpoint {
-    constructor(userId) {
-        super();
-        this.userId = userId;
-    }
+  constructor(userId) {
+    super();
+    this.userId = userId;
+  }
 
-    url() {
-        return '/users/' + this.userId
-    }
-    
-    /*
+  url() {
+    return "/users/" + this.userId;
+  }
+
+  /*
     ownResponses() {
         return [];
     }
     */
 
-    method() {
-        return 'PATCH'
-    }
+  method() {
+    return "PATCH";
+  }
 
-    needsAuthorization() {
-        return true;
-    }
+  needsAuthorization() {
+    return true;
+  }
 }

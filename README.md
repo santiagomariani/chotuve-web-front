@@ -11,6 +11,6 @@
 
 # Estructura de carpetas
 
-Puse 3 carpetas: components, pages y utils. En pages la idea seria hacer una carpeta por pagina (ruta, como podria ser /users, alguna seccion del dashboard) y en esa carpeta un archivo NameHerePage.js donde esta el componente principal de la pagina y tambien pueden ir en esa carpeta otros componentes que use solo esa pagina, para otros componentes que puedan compartirse entre varias paginas o componentes se ponen en components. Por ultimo, en utils se puede poner alguna logica que convenga tener separada. 
+Puse 3 carpetas: components, pages y utils. En pages la idea seria hacer una carpeta por pagina (ruta, como podria ser /users, alguna seccion del dashboard) y en esa carpeta un archivo NameHerePage.js donde esta el componente principal de la pagina y tambien pueden ir en esa carpeta otros componentes que use solo esa pagina, para otros componentes que puedan compartirse entre varias paginas o componentes se ponen en components. Por ultimo, en utils se puede poner alguna logica que convenga tener separada.
 
 No se si es lo mejor, probablemente cambie.

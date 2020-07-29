@@ -22,7 +22,8 @@
     "typeface-roboto": "0.0.75",
     "mdbreact": "4.27.0",
     "react-vis": "1.11.7",
-    "react-fittext": "1.0.0"
+    "react-fittext": "1.0.0",
+    "prettier": "2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,14 +1,13 @@
-version: '3.7'
+version: "3.7"
 
 services:
-
   web:
     container_name: chotuve-web
     build:
       context: .
       dockerfile: Dockerfile.development
     volumes:
-      - '.:/data/app/'
+      - ".:/data/app/"
     ports:
       - 3001:3000
     environment:

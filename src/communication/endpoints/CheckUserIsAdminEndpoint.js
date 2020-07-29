@@ -1,16 +1,16 @@
-import {Endpoint} from "./Endpoint.js";
-import {GetUserAdminInfoSuccessful} from "../responses/users/GetUserAdminInfoSuccessful";
+import { Endpoint } from "./Endpoint.js";
+import { GetUserAdminInfoSuccessful } from "../responses/users/GetUserAdminInfoSuccessful";
 
 export class CheckUserIsAdminEndpoint extends Endpoint {
-    url() {
-        return '/users/admin'
-    }
+  url() {
+    return "/users/admin";
+  }
 
-    method() {
-        return 'GET'
-    }
+  method() {
+    return "GET";
+  }
 
-    needsAuthorization() {
-        return true;
-    }
+  needsAuthorization() {
+    return true;
+  }
 }

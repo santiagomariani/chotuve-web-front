@@ -1,8 +1,7 @@
-import {SuccessfulApiResponse} from "../generalResponses/SuccessfulApiResponse.js";
+import { SuccessfulApiResponse } from "../generalResponses/SuccessfulApiResponse.js";
 
 export class DeleteUserSuccessful extends SuccessfulApiResponse {
-    
-    static defaultResponse() {
-        return { 'message': 'OK' }
-    }
+  static defaultResponse() {
+    return { message: "OK" };
+  }
 }
