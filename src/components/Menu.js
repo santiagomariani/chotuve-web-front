@@ -129,7 +129,7 @@ export default function Menu(props) {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            Chotuve Admin
           </Typography>
         </Toolbar>
       </AppBar>

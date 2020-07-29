@@ -12,6 +12,7 @@ import PrivateVsPublicVideos from 'components/PrivateVsPublicVideos'
 import {app} from 'app/app'
 import Last30DaysStats from 'components/Last30DaysStats';
 import Top10ErrorsLast30Days from 'components/Top10ErrorsLast30Days';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -134,6 +135,8 @@ export default function DashboardPage() {
       </Menu>
     )
   } else {
-    return null
+    return (<Menu>
+      <LinearProgress />
+    </Menu>)
   }
 }
