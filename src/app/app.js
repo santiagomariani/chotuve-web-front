@@ -49,7 +49,7 @@ class App {
             return new FakeRequester();
         }
 
-        const remoteApiUrl = 'https://chotuve-appserver-staging.herokuapp.com'
+        const remoteApiUrl = 'https://chotuve-auth-server-11.herokuapp.com'
         return new RemoteRequester(remoteApiUrl);
     }
 }
